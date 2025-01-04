@@ -7,6 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Nowy folder\**" />
+    <Compile Remove="Views\Nowy folder1\**" />
+    <Compile Remove="Views\Nowy folder\**" />
+    <Content Remove="Nowy folder\**" />
+    <Content Remove="Views\Nowy folder1\**" />
+    <Content Remove="Views\Nowy folder\**" />
+    <EmbeddedResource Remove="Nowy folder\**" />
+    <EmbeddedResource Remove="Views\Nowy folder1\**" />
+    <EmbeddedResource Remove="Views\Nowy folder\**" />
+    <None Remove="Nowy folder\**" />
+    <None Remove="Views\Nowy folder1\**" />
+    <None Remove="Views\Nowy folder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Views\Home\Asortyment.cshtml.cs" />
   </ItemGroup>
 
@@ -25,6 +40,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Asortyment-user\" />
   </ItemGroup>
 
 </Project>

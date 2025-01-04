@@ -1,0 +1,26 @@
+﻿    @page
+    @model Test.Views.Asortyment_admin.AsortymentModel
+    @{
+    }
+    <h2>Asortyment</h2>
+    <a class='btn btn-primary btn-sm' href="/">Dodaj produkt</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Produkt</th>
+                <th>Ilość w magazynie</th>
+                <th>Data dodania</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model.AsortymentLista){
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.produkt</td>
+                    <td>@item.ilosc</td>
+                    <td>@item.data</td>
+                </tr>
+            }
+        </tbody>
+    </table>
