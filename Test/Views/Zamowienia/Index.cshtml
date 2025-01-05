@@ -2,34 +2,44 @@
 
 <div class="container mt-4">
     <h1 class="text-center mb-4">Lista zamówień</h1>
-    <table class="table table-striped">
-        <thead>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
             <tr>
-                <th>Id</th>
+                <th>#</th>
                 <th>Produkt</th>
                 <th>Użytkownik</th>
                 <th>Ilość</th>
                 <th>Cena całkowita</th>
+                <th>ID</th>
                 <th>Data zamówienia</th>
                 <th>Akcje</th>
             </tr>
         </thead>
         <tbody>
+            @{
+                int counter = 1;
+            }
             @foreach (var zamowienie in Model)
             {
                 <tr>
-                    <td>@zamowienie.Id</td>
+                    <td>@counter</td>
                     <td>@zamowienie.ProduktName</td>
                     <td>@zamowienie.UserEmail</td>
                     <td>@zamowienie.Quantity</td>
                     <td>@zamowienie.TotalPrice.ToString("C")</td>
+                    <td>@zamowienie.Id</td>
                     <td>@zamowienie.DataZamowienia.ToString("yyyy-MM-dd HH:mm")</td>
                     <td>
-                        <a asp-action="Delete" asp-route-id="@zamowienie.Id" class="btn btn-danger">Usuń</a>
-
+                 
+                        <a asp-action="Delete" asp-route-id="@zamowienie.Id" class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash"></i> Usuń
+                        </a>
                     </td>
                 </tr>
+                counter++;
             }
         </tbody>
     </table>
+
 </div>
