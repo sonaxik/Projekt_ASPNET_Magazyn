@@ -13,6 +13,6 @@ namespace Test.Models
         [MaxLength(100)]
         public string Description { get; set; }
 
-
+        public int Quantity { get; set; }
     }
 }
