@@ -144,7 +144,7 @@ namespace Test.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(asortyment);
-        }   
+        }
 
         [Authorize(Roles = "User")]
         public async Task<IActionResult> Zamow(int id)
