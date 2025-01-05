@@ -1,0 +1,27 @@
+﻿@model Asortyment
+
+@{
+    ViewData["Title"] = "Usuń produkt";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">@ViewData["Title"]</h1>
+
+    <div class="alert alert-warning text-center">
+        <h5>Czy na pewno chcesz usunąć produkt?</h5>
+        <p>
+            <strong>@Model.Name</strong><br />
+            Marka: @Model.Brand<br />
+            Cena: @Model.Price.ToString("C")<br />
+            Opis: @Model.Description
+        </p>
+    </div>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div class="text-center">
+            <button type="submit" class="btn btn-danger">Usuń</button>
+            <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+        </div>
+    </form>
+</div>

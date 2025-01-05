@@ -12,7 +12,7 @@ public class ApplicationDBContext : IdentityDbContext<IdentityUser>
         : base(options)
     {
     }
-
+    public DbSet<Asortyment> Asortyment { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
