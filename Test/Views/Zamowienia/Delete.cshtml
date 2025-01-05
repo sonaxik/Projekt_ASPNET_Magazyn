@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Potwierdzenie usunięcia zamówienia";
+    var isAdmin = User.IsInRole("Admin"); 
+    var cancelAction = isAdmin ? "Index" : "UserIndex"; 
 }
 
 <h1 class="text-center">@ViewData["Title"]</h1>
@@ -19,7 +21,7 @@
     <form method="post">
         <div class="text-end">
             <button type="submit" class="btn btn-danger">Usuń</button>
-            <a asp-action="UserIndex" class="btn btn-secondary">Anuluj</a>
+            <a asp-action="@cancelAction" class="btn btn-secondary">Anuluj</a>
         </div>
     </form>
 </div>
