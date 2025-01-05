@@ -12,7 +12,7 @@ using Test.Areas.Identity.Data;
 namespace Test.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20250105012333_jeden")]
+    [Migration("20250105154650_jeden")]
     partial class jeden
     {
         /// <inheritdoc />

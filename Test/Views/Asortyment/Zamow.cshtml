@@ -1,12 +1,28 @@
-﻿@model Test.Models.Asortyment
+﻿@model Asortyment
 
-<h1>Zamów produkt</h1>
+@{
+    ViewData["Title"] = "Zamów produkt";
+}
 
-<form asp-action="Zamow" method="post">
-    <div class="form-group">
-        <label for="quantity">Ilość:</label>
-        <input type="number" id="quantity" name="quantity" class="form-control" min="1" max="@Model.Quantity" value="1" />
-    </div>
-    <input type="hidden" name="id" value="@Model.Id" />
-    <button type="submit" class="btn btn-primary">Zamów</button>
-</form>
+<div class="container mt-4">
+    <h1 class="text-center mb-4">@ViewData["Title"]</h1>
+
+    <h3 class="text-center">Ile @Model.Name chcesz zamówić?</h3>
+
+    <form asp-action="Zamow" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Wybierz ilość:</label>
+            <input type="number" id="quantity" name="quantity" class="form-control" min="1" max="@Model.Quantity" required />
+            <small class="form-text text-muted">
+                Dostępna ilość: @Model.Quantity
+            </small>
+        </div>
+
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary">Zamów</button>
+            <a asp-action="UserIndex" class="btn btn-secondary">Anuluj</a>
+        </div>
+    </form>
+</div>
