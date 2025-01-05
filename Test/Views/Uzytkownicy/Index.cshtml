@@ -1,0 +1,29 @@
+﻿@model IEnumerable<dynamic>
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Lista użytkowników</h1>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Nazwa użytkownika</th>
+                <th>Liczba zamówień</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int counter = 1;
+            }
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@counter</td>
+                    <td>@user.UserName</td>
+                    <td>@user.OrderCount</td>
+                </tr>
+                counter++;
+            }
+        </tbody>
+    </table>
+</div>
