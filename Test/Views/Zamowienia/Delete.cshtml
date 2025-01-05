@@ -1,0 +1,25 @@
+﻿@model Zamowienia
+
+@{
+    ViewData["Title"] = "Potwierdzenie usunięcia zamówienia";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<div class="container mt-4">
+    <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">Jesteś pewny, że chcesz usunąć to zamówienie?</h4>
+        <p>Produkt: @Model.Produkt.Name</p>
+        <p>Ilość: @Model.Quantity</p>
+        <p>Użytkownik: @Model.User.Email</p>
+        <hr>
+        <p class="mb-0">Po usunięciu nie będzie można przywrócić tego zamówienia.</p>
+    </div>
+
+    <form method="post">
+        <div class="text-end">
+            <button type="submit" class="btn btn-danger">Usuń</button>
+            <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+        </div>
+    </form>
+</div>

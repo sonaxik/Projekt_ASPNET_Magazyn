@@ -1,0 +1,35 @@
+﻿@model IEnumerable<dynamic>
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Lista zamówień</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Produkt</th>
+                <th>Użytkownik</th>
+                <th>Ilość</th>
+                <th>Cena całkowita</th>
+                <th>Data zamówienia</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var zamowienie in Model)
+            {
+                <tr>
+                    <td>@zamowienie.Id</td>
+                    <td>@zamowienie.ProduktName</td>
+                    <td>@zamowienie.UserEmail</td>
+                    <td>@zamowienie.Quantity</td>
+                    <td>@zamowienie.TotalPrice.ToString("C")</td>
+                    <td>@zamowienie.DataZamowienia.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@zamowienie.Id" class="btn btn-danger">Usuń</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

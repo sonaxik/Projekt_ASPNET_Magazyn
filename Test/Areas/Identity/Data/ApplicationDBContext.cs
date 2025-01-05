@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Reflection.Emit;
 using Test.Models;
 
 namespace Test.Areas.Identity.Data;
@@ -17,6 +18,17 @@ public class ApplicationDBContext : IdentityDbContext<IdentityUser>
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+        builder.Entity<Zamowienia>()
+        .HasOne(z => z.User)
+        .WithMany()
+        .HasForeignKey(z => z.UserId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+        builder.Entity<Zamowienia>()
+            .HasOne(z => z.Produkt)
+            .WithMany()
+            .HasForeignKey(z => z.ProduktId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
     private class ApplicationUserEntityConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
@@ -27,5 +39,3 @@ public class ApplicationDBContext : IdentityDbContext<IdentityUser>
         }
     }
 }
-
-
