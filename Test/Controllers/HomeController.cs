@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Test.Areas.Identity.Data;
 using Test.Models;
 
 namespace Test.Controllers
@@ -8,14 +10,28 @@ namespace Test.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDBContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDBContext context, UserManager<IdentityUser> userManager)
         {
-            _logger = logger;
+            _context = context;
+            _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            int noweZamowienia = 0;
+
+            if (User.IsInRole("Admin"))
+            {
+                var dzisiejszaData = DateTime.Today;
+                noweZamowienia = _context.Zamowienia
+                    .Where(z => z.DataZamowienia >= dzisiejszaData)
+                    .Count();
+            }
+
+            ViewBag.NoweZamowienia = noweZamowienia;
             return View();
         }
 

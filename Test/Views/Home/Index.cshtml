@@ -1,18 +1,18 @@
 ﻿@using Microsoft.AspNetCore.Identity
-
-@inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Strona główna";
+    var noweZamowienia = ViewBag.NoweZamowienia as int? ?? 0;
 }
 
-@if(User.IsInRole("Admin"))
-{
-    <h1>Hi Admin!</h1>
-}
-else if(User.IsInRole("User"))
-{
-    <h1>Elo User</h1>
-}
+<div class="container mt-4">
+    <h1>Witaj na stronie głównej!</h1>
+
+    @if (User.IsInRole("Admin"))
+    {
+        <p class="alert alert-info">
+            Witaj ponownie! Dzisiaj wpadło <strong>@noweZamowienia</strong> nowych zamówień.
+        </p>
+    }
+</div>

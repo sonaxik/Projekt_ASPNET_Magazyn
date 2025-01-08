@@ -31,7 +31,7 @@ namespace Test.Controllers
 
             return View(asortyment);
         }
-        //
+
         [Authorize(Roles = "User")]
         public async Task<IActionResult> UserIndex()
         {
