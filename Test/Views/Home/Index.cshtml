@@ -6,13 +6,87 @@
     var noweZamowienia = ViewBag.NoweZamowienia as int? ?? 0;
 }
 
+<style>
+    .custom-list {
+        list-style: none; 
+        padding: 0; 
+        margin: 0;
+        display: flex;
+        gap:12px;
+    }
+
+    .custom-list-item {
+        background-color: #E7E7E7; 
+        padding: 20px;
+        flex: 1;
+        text-align: center;
+        margin-bottom: 10px; 
+        border-radius: 5px; 
+        cursor:pointer;
+        height:320px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        transition: background-color 0.3s;
+    }
+
+        .custom-list-item:hover {
+            background-color: #D6D6D6;
+        }
+
+        .custom-list-item:last-child {
+            margin-right: 0; 
+        }
+
+        .custom-list-item a {
+            text-decoration: none; 
+        }
+
+</style>
+
 <div class="container mt-4">
-    <h1>Witaj na stronie głównej!</h1>
+    <h1 class="text-center">Witaj na stronie głównej!</h1>
+    @if (User.IsInRole("Admin") || User.IsInRole("User"))
+    {
+    <p class="text-center">Co chciałbyś zrobić?</p>
+
+    }
 
     @if (User.IsInRole("Admin"))
     {
+        <ul class="custom-list">
+            <li class="custom-list-item" onclick="window.location.href='/Asortyment/Index';">
+                <h2>Asortyment</h2>
+                <p>Przejdź do asortymentu, aby sprawdzić lub zamówić nasze produkty</p>
+            </li>
+            <li class="custom-list-item" onclick="window.location.href='/Zamowienia/Index';">
+                <h2>Zamówienia</h2>
+                <p>Przejdź do zamówień klientów, aby sprawdzić złożone już zamówienia</p>
+            </li>
+            <li class="custom-list-item" onclick="window.location.href='/Uzytkownicy/Index';">
+                <h2>Użytkownicy</h2>
+                <p>Przejdź do użytkowników, aby sprawdzić wszystkich zarejestrowanych użytkowników oraz ich ilość zamówień</p>
+            </li>
+        </ul>
         <p class="alert alert-info">
-            Witaj ponownie! Dzisiaj wpadło <strong>@noweZamowienia</strong> nowych zamówień.
+            Dzisiaj wpadło <strong>@noweZamowienia</strong> nowych zamówień.
+        </p>
+    }
+    @if (User.IsInRole("User"))
+    {
+        <ul class="custom-list">
+            <li class="custom-list-item" onclick="window.location.href='/Asortyment/UserIndex';">
+                <h2>Asortyment</h2>
+                <p>Przejdź do asortymentu, aby sprawdzić lub zamówić nasze produkty</p>
+            </li>
+            <li class="custom-list-item" onclick="window.location.href='/Zamowienia/UserIndex';">
+                <h2>Zamówienia</h2>
+                <p>Przejdź do twoich zamówień, aby sprawdzić co dotychczas zamówiłeś</p>
+            </li>
+        </ul>
+        <p class="alert alert-info">
+            Dzisiaj wpadło <strong>@noweZamowienia</strong> nowych zamówień.
         </p>
     }
 </div>
