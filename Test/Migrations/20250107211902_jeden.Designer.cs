@@ -12,7 +12,7 @@ using Test.Areas.Identity.Data;
 namespace Test.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20250105154650_jeden")]
+    [Migration("20250107211902_jeden")]
     partial class jeden
     {
         /// <inheritdoc />
@@ -353,7 +353,7 @@ namespace Test.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Produkt");
