@@ -59,7 +59,7 @@ Aplikacja została zbudowana z użyciem ASP.NET Core, z integracją bazy danych 
    - W pliku `appsettings.json` ustaw poprawne dane połączenia z bazą danych:
      ```json
      "ConnectionStrings": {
-         "DefaultConnection": "Server=YOUR_SERVER;Database=TestDB;Trusted_Connection=True;"
+         "DefaultConnection": "Data Source=YOUR_SERVER;Initial Catalog=Test;Integrated Security=True;TrustServerCertificate=True"
      }
      ```
 
