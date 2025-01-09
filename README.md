@@ -21,6 +21,7 @@ Aplikacja została zbudowana z użyciem ASP.NET Core, z integracją bazy danych 
   - `AsortymentController`: Zarządza operacjami na produktach.
   - `ZamowieniaController`: Obsługuje zamówienia.
   - `HomeController`: Odpowiada za stronę główną.
+  -  `UzytkownicyaController`: Odpowiada za stronę użytkownicy.
 - **/Models**: Zawiera modele danych:
   - `Asortyment`: Reprezentuje produkty magazynowe.
   - `Zamowienia`: Reprezentuje złożone zamówienia.
@@ -37,7 +38,7 @@ Aplikacja została zbudowana z użyciem ASP.NET Core, z integracją bazy danych 
 
 - Zarządzanie asortymentem (dodawanie, edytowanie, usuwanie produktów).
 - Przeglądanie i zarządzanie zamówieniami.
-- Zarządzanie użytkownikami (dodawanie ról, przeglądanie).
+- Zarządzanie użytkownikami (przeglądanie uzytkowików i ich zamówień).
 
 ### Dla zwykłego użytkownika:
 
@@ -102,7 +103,8 @@ W pliku `Program.cs` aplikacja:
 ### Administrator (Admin):
 
 - Dostęp do wszystkich funkcji aplikacji.
-- Możliwość przeglądania, edytowania i usuwania produktów oraz zamówień.
+- Możliwość przeglądania, edytowania i usuwania produktów.
+- Możliwość przeglądania i usuwania zamówień.
 - Podgląd na wszystkich użytkowników i sumaryczną liczbę ich zamówień.
 
 ### Zwykły użytkownik (User):
